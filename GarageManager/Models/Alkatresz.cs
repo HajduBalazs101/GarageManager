@@ -17,7 +17,6 @@ namespace GarageManager.Models
             Ar = ar;
             AutoTipus = autoTipus;
         }
-
         public abstract void Kiiras();
 
     }

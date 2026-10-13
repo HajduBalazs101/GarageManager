@@ -12,6 +12,9 @@ internal class Program
         raktar.Add(new KopoAlkatresz("Levegőszűrő", 12000, "Honda Civic", 15000));
         raktar.Add(new KarosszeriaElem("Bal első ajtó", 25000, "Honda Civic", "Fekete"));
         raktar.Add(new KopoAlkatresz("Fékbetét", 20000, "Suzuki Swift", 40000));
+        rendelesek.Add(new KopoAlkatresz("Olajszűrő", 15000, "Mercedes E-Class", 10000));
+        rendelesek.Add(new KarosszeriaElem("Jobb hátsó ajtó", 30000, "BMW 3 Series", "Kék"));
+
 
         bool fut = true;
         while (fut)
@@ -20,8 +23,9 @@ internal class Program
             Console.WriteLine("1. Alkatrészek listázása");
             Console.WriteLine("2. Alkatrész hozzáadása");
             Console.WriteLine("3. Alkatrész keresése neve alapján");
-            Console.WriteLine("4. Alkatrész keresése autó típusa alapján");
-            Console.WriteLine("5. Kilépés");
+            Console.WriteLine("4. Alkatrész keresése autó márkája alapján");
+            Console.WriteLine("5. Rendelések listázása");
+            Console.WriteLine("6. Kilépés");
             Console.Write("Válassz egy opciót: ");
             string valasztas = Console.ReadLine();
             switch (valasztas)
@@ -66,7 +70,7 @@ internal class Program
                     bool talalat = false;
                     foreach (var alkatresz in raktar)
                     {
-                        if (alkatresz.Nev.Equals(keresettNev))
+                        if (alkatresz.Nev.Contains(keresettNev))
                         {
                             alkatresz.Kiiras();
                             talalat = true;
@@ -116,7 +120,7 @@ internal class Program
                     break;
 
                 case "4":
-                    Console.Write("Add meg a keresett autó típusát: ");
+                    Console.Write("Add meg a keresett autó márkáját: ");
                     string keresettAuto = Console.ReadLine();
                     bool talalatAuto = false;
                     foreach (var alkatresz in raktar)
@@ -134,6 +138,14 @@ internal class Program
                     break;
 
                 case "5":
+                    Console.WriteLine("--Rendelések--");
+                    foreach (var rendeles in rendelesek)
+                    {
+                        rendeles.Kiiras();
+                    }
+                    break;
+
+                case "6":
                     fut = false;
                     break;
             }
